@@ -1,10 +1,9 @@
 /* =============================================================
-   1. KHAI BÁO 2 FONT CHỮ CUSTOM (.OTF)
-   (Bạn nhớ đổi tên file .otf đúng với tên file bạn đã upload nhé)
+   1. KHAI BÁO FONT CHỮ CUSTOM
 ============================================================= */
 @font-face {
     font-family: 'CustomTitleFont';
-    src: url('../fonts/SVN-Down River.otf') format('opentype');
+    src: url('../fonts/font-tieude.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -12,25 +11,24 @@
 
 @font-face {
     font-family: 'CustomBodyFont';
-    src: url('../fonts/SVN-Daisy.otf') format('opentype');
+    src: url('../fonts/font-noidung.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 /* =============================================================
-   2. BẢNG MÀU CUTECORE & CẤU HÌNH CHUNG (VARIABLES & BASE)
+   2. BẢNG MÀU SAGE GREEN & COTTAGECORE PASTEL (TỪ BỘ ẢNH MẪU)
 ============================================================= */
 :root {
-    --bg-yellow: #fff9db;
-    --pink-main: #ff9aa2;
-    --pink-light: #ffb7b2;
-    --purple-soft: #d6c7ff;
-    --yellow-bright: #ffe5ad;
-    --mint-light: #b5ead7;
-    --blue-soft: #a8dadc;
-    --text-dark: #4a4e69;
-    --white: #ffffff;
+    --sage-bg: #E3EED4;
+    --sage-dark: #6B8E4E;
+    --patchwork-blue: #C5D3E8;
+    --patchwork-yellow: #FFF2D7;
+    --pink-blush: #F7D0D8;
+    --cream-paper: #FFFDF9;
+    --text-charcoal: #3D405B;
+    --border-thick: 3px solid #6B8E4E;
 }
 
 * {
@@ -45,308 +43,221 @@ html {
 
 body {
     font-family: 'CustomBodyFont', cursive, sans-serif;
-    background-color: var(--bg-yellow);
-    color: var(--text-dark);
-    /* Nền Caro Gingham Pastel */
+    font-size: 1.3rem; /* Cỡ chữ to rõ ràng */
+    color: var(--text-charcoal);
+    line-height: 1.6;
+    background-color: var(--sage-bg);
+    /* Nền Patchwork Caro Sage Green + Hoạ tiết Chấm Bột Xoắn Nguệch Ngoạc */
     background-image: 
-        linear-gradient(rgba(181, 234, 215, 0.4) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(255, 183, 178, 0.4) 2px, transparent 2px);
-    background-size: 30px 30px;
-    min-height: 100vh;
+        radial-gradient(rgba(107, 142, 78, 0.15) 2px, transparent 2px),
+        linear-gradient(rgba(107, 142, 78, 0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(107, 142, 78, 0.2) 2px, transparent 2px);
+    background-size: 30px 30px, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0;
 }
 
-/* Áp dụng Font Tiêu Đề */
-h1, h2, h3, .title-sticker, .page-title, .section-heading {
+h1, h2, h3, .sticker-title, .nav-item {
     font-family: 'CustomTitleFont', cursive, sans-serif !important;
 }
 
 /* =============================================================
-   3. PHẦN MỞ ĐẦU (INTRO / HERO SECTION)
+   3. THANH NAV-BAR PHONG CÁCH WASHI TAPE (BĂNG KEO XÉ DÁN)
 ============================================================= */
-.intro-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.title-sticker {
-    background: var(--pink-main);
-    color: var(--white);
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: 5px solid var(--white);
-    box-shadow: 0 8px 20px rgba(255, 154, 162, 0.4);
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    transform: rotate(-2deg);
-    display: inline-block;
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    max-width: 620px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 12px 24px;
-    border-radius: 20px;
-    border: 3px dashed var(--blue-soft);
-    color: #555;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-.stats-badge {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.badge-item {
-    background: var(--white);
-    border: 3px solid var(--purple-soft);
-    padding: 6px 16px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    box-shadow: 3px 3px 0px var(--purple-soft);
-}
-
-.class-info-container {
-    max-width: 800px;
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background: var(--white);
-    border-radius: 24px;
-    padding: 25px;
-    border: 4px solid var(--mint-light);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+    background: rgba(255, 253, 249, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 12px 10px;
+    z-index: 1000;
+    border-bottom: 3px dashed var(--sage-dark);
+    flex-wrap: wrap;
 }
 
-.section-heading {
-    font-size: 2rem;
-    color: #ff6b6b;
-    margin-bottom: 15px;
-}
-
-.teachers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-top: 15px;
-}
-
-.teacher-card {
-    background: #fff0f3;
-    border: 2px solid var(--pink-light);
-    padding: 12px;
-    border-radius: 16px;
-    text-align: center;
-    transition: transform 0.2s;
-}
-
-.teacher-card:hover {
-    transform: translateY(-3px);
-}
-
-.teacher-card strong {
-    display: block;
-    color: #d62828;
-    font-size: 1.2rem;
-}
-
-.teacher-card span {
-    font-size: 1rem;
-    color: #666;
-}
-
-.scroll-down-btn {
-    background: var(--yellow-bright);
-    color: var(--text-dark);
+.nav-item {
     text-decoration: none;
-    font-size: 1.3rem;
-    padding: 10px 24px;
-    border-radius: 30px;
-    border: 3px solid var(--white);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.2s;
+    color: var(--text-charcoal);
+    font-size: 1.25rem;
+    padding: 6px 18px;
+    background: var(--patchwork-yellow);
+    border: 2px solid var(--sage-dark);
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px var(--sage-dark);
+    transform: rotate(-1deg);
+    transition: all 0.2s;
 }
 
-.scroll-down-btn:hover {
-    transform: scale(1.05);
+.nav-item:nth-child(even) {
+    background: var(--pink-blush);
+    transform: rotate(1deg);
+}
+
+.nav-item:hover {
+    transform: scale(1.08) rotate(0deg);
+    background: var(--patchwork-blue);
 }
 
 /* =============================================================
-   4. PHẦN CUỐN SỔ SCRAPBOOK (SCRAPBOOK SECTION)
+   4. CÁC KHUNG NỘI DUNG DẠNG STICKER BỌC VIỀN DÀY (GROCERY / JOURNAL)
 ============================================================= */
-.scrapbook-section {
+.section-container {
     min-height: 100vh;
-    padding: 40px 15px;
+    padding: 90px 20px 50px 20px;
+    max-width: 1050px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-.book-container {
-    width: 100%;
-    max-width: 900px;
-    min-height: 580px;
-    background-color: #f7d6e0;
-    border-radius: 28px;
-    border: 6px solid var(--white);
-    box-shadow: 0 15px 35px rgba(255, 154, 162, 0.3);
-    padding: 15px;
-    position: relative;
-    display: flex;
-}
-
-.notebook {
-    width: 100%;
-    background-color: var(--white);
-    border-radius: 18px;
-    display: flex;
-    position: relative;
-    background-image: 
-        linear-gradient(rgba(181, 234, 215, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 183, 178, 0.3) 1px, transparent 1px);
-    background-size: 22px 22px;
-    overflow: hidden;
-}
-
-.spine {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 24px;
-    transform: translateX(-50%);
-    background: repeating-linear-gradient(
-        0deg,
-        #ffb7b2 0px,
-        #ffb7b2 12px,
-        transparent 12px,
-        transparent 24px
-    );
-    z-index: 10;
-    border-radius: 10px;
-}
-
-.page {
-    flex: 1;
-    padding: 25px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     position: relative;
 }
 
-.page-header {
-    border-bottom: 3px dashed var(--pink-light);
-    padding-bottom: 6px;
-    margin-bottom: 12px;
-}
-
-.page-title {
-    font-size: 2.3rem;
-    color: #e63946;
-}
-
-.page-subtitle {
-    font-size: 1.1rem;
-    color: #6c757d;
-}
-
-/* Khung Ảnh Polaroid Dán Băng Keo */
-.polaroid-card {
-    background: white;
-    padding: 10px 10px 18px 10px;
-    border-radius: 8px;
-    box-shadow: 3px 6px 15px rgba(0,0,0,0.08);
-    transform: rotate(-2deg);
-    cursor: pointer;
-    position: relative;
-    margin: 10px 0;
-    border: 1px solid #eee;
-    transition: all 0.3s ease;
-}
-
-.polaroid-card:hover {
-    transform: scale(1.05) rotate(0deg);
-    box-shadow: 5px 10px 20px rgba(0,0,0,0.15);
-}
-
-.polaroid-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 6px;
-}
-
-.polaroid-caption {
-    font-family: 'CustomTitleFont', cursive, sans-serif;
-    font-size: 1.5rem;
+/* Tiêu đề mục dạng Khung Nhãn Bọt Biển Cutout */
+.sticker-heading {
+    font-size: 3rem;
+    color: var(--sage-dark);
     text-align: center;
-    margin-top: 6px;
-    color: #333;
+    background: var(--cream-paper);
+    display: inline-block;
+    margin: 0 auto 30px auto;
+    padding: 10px 30px;
+    border: 4px solid var(--sage-dark);
+    border-radius: 40px;
+    box-shadow: 5px 5px 0px var(--sage-dark);
+    transform: rotate(-1deg);
+    position: relative;
 }
 
-.washi-tape {
+/* Băng dính Washi Tape Caro Pastel dán góc */
+.washi-tape-decor {
     position: absolute;
-    top: -10px;
-    left: 30%;
-    width: 70px;
-    height: 18px;
-    background-color: rgba(255, 229, 173, 0.85);
-    transform: rotate(-4deg);
-    border-left: 2px dashed rgba(0,0,0,0.1);
-    border-right: 2px dashed rgba(0,0,0,0.1);
+    top: -12px;
+    left: 20px;
+    width: 90px;
+    height: 24px;
+    background: repeating-linear-gradient(
+        45deg,
+        #f7d0d8,
+        #f7d0d8 10px,
+        #fff2d7 10px,
+        #fff2d7 20px
+    );
+    border-left: 2px dashed rgba(0,0,0,0.15);
+    border-right: 2px dashed rgba(0,0,0,0.15);
+    transform: rotate(-3deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
-.controls {
-    position: absolute;
-    bottom: -55px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    align-items: center;
+/* Khung Tương Tác Sổ Tay (Overview) */
+.journal-card {
+    background: var(--cream-paper);
+    border-radius: 28px;
+    padding: 35px;
+    border: 4px solid var(--sage-dark);
+    box-shadow: 8px 8px 0px rgba(107, 142, 78, 0.3);
+    position: relative;
+    font-size: 1.35rem;
 }
 
-.btn-control {
-    background-color: var(--pink-main);
-    color: white;
-    border: 3px solid var(--white);
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-size: 1.2rem;
+.banner-grocery-sticker {
+    background: var(--patchwork-blue);
+    color: #1d3557;
+    padding: 20px 35px;
+    border-radius: 35px;
+    border: 4px solid var(--text-charcoal);
+    font-size: 3rem;
+    box-shadow: 6px 6px 0px var(--text-charcoal);
+    display: inline-block;
+    margin-bottom: 25px;
+    transform: rotate(-1.5deg);
+}
+
+/* Grid Khung Sticker Thành Viên / Thầy Cô */
+.sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.sticker-item {
+    background: var(--cream-paper);
+    border-radius: 22px;
+    padding: 25px;
+    border: 3.5px solid var(--sage-dark);
+    box-shadow: 6px 6px 0px var(--sage-dark);
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.sticker-item:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+.sticker-item h3 {
+    font-size: 1.8rem;
+    color: var(--sage-dark);
+    margin-bottom: 8px;
+}
+
+/* Album Ảnh Kỉ Yếu - Polaroid Khung Nhãn Hàn Quốc/Nhật Bản */
+.photo-album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.photo-sticker-card {
+    background: var(--cream-paper);
+    padding: 15px 15px 22px 15px;
+    border-radius: 18px;
+    border: 3.5px solid var(--text-charcoal);
+    box-shadow: 6px 6px 0px var(--patchwork-blue);
+    position: relative;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: background 0.2s;
+    transition: transform 0.3s ease;
 }
 
-.btn-control:hover {
-    background-color: var(--pink-light);
+.photo-sticker-card:hover {
+    transform: scale(1.04) rotate(1deg);
 }
 
-.page-number {
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    font-weight: bold;
-    background: white;
-    padding: 4px 12px;
+.photo-sticker-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #E2E8F0;
+}
+
+.photo-caption-sticker {
+    text-align: center;
+    font-size: 1.45rem;
+    margin-top: 10px;
+    color: var(--text-charcoal);
+    background: var(--patchwork-yellow);
+    padding: 6px 12px;
     border-radius: 15px;
-    border: 2px solid var(--pink-light);
+    border: 2px dashed var(--sage-dark);
+    display: inline-block;
+    width: 100%;
 }
 
-/* Responsive Điện Thoại */
+/* Ngôi Sao Polka-dot Decor Đồ Họa SVG */
+.star-polka {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    pointer-events: none;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .notebook { flex-direction: column; }
-    .spine { display: none; }
+    .banner-grocery-sticker { font-size: 2.1rem; padding: 15px 20px; }
+    .sticker-heading { font-size: 2.2rem; }
+    body { font-size: 1.15rem; }
 }
