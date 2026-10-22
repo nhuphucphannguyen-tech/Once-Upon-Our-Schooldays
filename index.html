@@ -3,470 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Once Upon Our Schooldays 💖 | Sổ Kỷ Niệm Thanh Xuân</title>
+    <title>Once Upon Our Schooldays 🎓 | Lưu Bút Lớp 12A1</title>
     
-    <style>
-        /* =============================================================
-           1. KHAI BÁO 2 FONT CHỮ CUSTOM (.OTF)
-        ============================================================= */
-        /* Font dành riêng cho Tiêu Đề (Spaghetti / Handmade Title) */
-        @font-face {
-            font-family: 'CustomTitleFont';
-            src: url('./assets/fonts/SVN-Down River.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        /* Font dành riêng cho Nội Dung (Body / Note content) */
-        @font-face {
-            font-family: 'CustomBodyFont';
-            src: url('./assets/fonts/SVN-Daisy.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        :root {
-            --bg-yellow: #fff9db;
-            --pink-main: #ff9aa2;
-            --pink-light: #ffb7b2;
-            --purple-soft: #d6c7ff;
-            --yellow-bright: #ffe5ad;
-            --mint-light: #b5ead7;
-            --blue-soft: #a8dadc;
-            --text-dark: #4a4e69;
-            --white: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Áp dụng Font Nội Dung cho toàn bộ trang web */
-        body {
-            font-family: 'CustomBodyFont', sans-serif;
-            background-color: var(--bg-yellow);
-            color: var(--text-dark);
-            background-image: 
-                linear-gradient(rgba(181, 234, 215, 0.4) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(255, 183, 178, 0.4) 2px, transparent 2px);
-            background-size: 30px 30px;
-            min-height: 100vh;
-        }
-
-        /* Áp dụng Font Tiêu Đề cho các đề mục lớn, sticker, tiêu đề trang */
-        h1, h2, h3, .title-sticker, .page-title, .section-heading {
-            font-family: 'CustomTitleFont', sans-serif !important;
-        }
-
-        /* -------------------------------------------------------------
-           HERO SECTION (MỞ ĐẦU)
-        ------------------------------------------------------------- */
-        .intro-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .title-sticker {
-            background: var(--pink-main);
-            color: var(--white);
-            padding: 15px 35px;
-            border-radius: 50px;
-            border: 5px solid var(--white);
-            box-shadow: 0 8px 20px rgba(255, 154, 162, 0.4);
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            transform: rotate(-2deg);
-            display: inline-block;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            max-width: 620px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 24px;
-            border-radius: 20px;
-            border: 3px dashed var(--blue-soft);
-            color: #555;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .stats-badge {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .badge-item {
-            background: var(--white);
-            border: 3px solid var(--purple-soft);
-            padding: 6px 16px;
-            border-radius: 25px;
-            font-size: 1.2rem;
-            box-shadow: 3px 3px 0px var(--purple-soft);
-        }
-
-        .class-info-container {
-            max-width: 800px;
-            width: 100%;
-            background: var(--white);
-            border-radius: 24px;
-            padding: 25px;
-            border: 4px solid var(--mint-light);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-
-        .section-heading {
-            font-size: 2rem;
-            color: #ff6b6b;
-            margin-bottom: 15px;
-        }
-
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .teacher-card {
-            background: #fff0f3;
-            border: 2px solid var(--pink-light);
-            padding: 12px;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .teacher-card strong {
-            display: block;
-            color: #d62828;
-            font-size: 1.2rem;
-        }
-
-        .teacher-card span {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .scroll-down-btn {
-            background: var(--yellow-bright);
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1.3rem;
-            padding: 10px 24px;
-            border-radius: 30px;
-            border: 3px solid var(--white);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
-        }
-
-        .scroll-down-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* -------------------------------------------------------------
-           SCRAPBOOK SECTION (CUỐN SỔ)
-        ------------------------------------------------------------- */
-        .scrapbook-section {
-            min-height: 100vh;
-            padding: 40px 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .book-container {
-            width: 100%;
-            max-width: 900px;
-            min-height: 580px;
-            background-color: #f7d6e0;
-            border-radius: 28px;
-            border: 6px solid var(--white);
-            box-shadow: 0 15px 35px rgba(255, 154, 162, 0.3);
-            padding: 15px;
-            position: relative;
-            display: flex;
-        }
-
-        .notebook {
-            width: 100%;
-            background-color: var(--white);
-            border-radius: 18px;
-            display: flex;
-            position: relative;
-            background-image: 
-                linear-gradient(rgba(181, 234, 215, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 183, 178, 0.3) 1px, transparent 1px);
-            background-size: 22px 22px;
-            overflow: hidden;
-        }
-
-        .spine {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 24px;
-            transform: translateX(-50%);
-            background: repeating-linear-gradient(
-                0deg,
-                #ffb7b2 0px,
-                #ffb7b2 12px,
-                transparent 12px,
-                transparent 24px
-            );
-            z-index: 10;
-            border-radius: 10px;
-        }
-
-        .page {
-            flex: 1;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .page-header {
-            border-bottom: 3px dashed var(--pink-light);
-            padding-bottom: 6px;
-            margin-bottom: 12px;
-        }
-
-        .page-title {
-            font-size: 2.3rem;
-            color: #e63946;
-        }
-
-        .page-subtitle {
-            font-size: 1.1rem;
-            color: #6c757d;
-        }
-
-        .polaroid-card {
-            background: white;
-            padding: 10px 10px 18px 10px;
-            border-radius: 8px;
-            box-shadow: 3px 6px 15px rgba(0,0,0,0.08);
-            transform: rotate(-2deg);
-            cursor: pointer;
-            position: relative;
-            margin: 10px 0;
-            border: 1px solid #eee;
-            transition: transform 0.2s;
-        }
-
-        .polaroid-card:hover {
-            transform: scale(1.05) rotate(0deg);
-        }
-
-        .polaroid-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        .polaroid-caption {
-            font-family: 'CustomTitleFont', cursive, sans-serif;
-            font-size: 1.5rem;
-            text-align: center;
-            margin-top: 6px;
-            color: #333;
-        }
-
-        .washi-tape {
-            position: absolute;
-            top: -10px;
-            left: 30%;
-            width: 70px;
-            height: 18px;
-            background-color: rgba(255, 229, 173, 0.85);
-            transform: rotate(-4deg);
-            border-left: 2px dashed rgba(0,0,0,0.1);
-            border-right: 2px dashed rgba(0,0,0,0.1);
-        }
-
-        .controls {
-            position: absolute;
-            bottom: -55px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .btn-control {
-            background-color: var(--pink-main);
-            color: white;
-            border: 3px solid var(--white);
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .page-number {
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            font-weight: bold;
-            background: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            border: 2px solid var(--pink-light);
-        }
-
-        @media (max-width: 768px) {
-            .notebook { flex-direction: column; }
-            .spine { display: none; }
-        }
-    </style>
+    <!-- Liên kết File CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
-    <!-- PHẦN 1: HERO GIỚI THIỆU -->
-    <section class="intro-section" id="intro">
-        <div class="title-sticker">
-            🎀 Once Upon Our Schooldays ✨
+    <!-- THANH ĐIỀU HƯỚNG CÁC MỤC -->
+    <nav class="site-nav">
+        <a href="#tong-quan" class="nav-link">🏠 Tổng Quan</a>
+        <a href="#thanh-vien" class="nav-link">👥 Thành Viên Lớp</a>
+        <a href="#giao-vien" class="nav-link">💐 Giáo Viên</a>
+        <a href="#ki-yeu" class="nav-link">📸 Kỉ Yếu</a>
+        <a href="#ki-uc" class="nav-link">📖 Kí Ức</a>
+    </nav>
+
+    <!-- 1. MỤC TỔNG QUAN -->
+    <section id="tong-quan" class="section-container">
+        <div style="text-align: center;">
+            <div class="banner-title-box">
+                Once Upon Our Schooldays
+            </div>
         </div>
-
-        <p class="hero-subtitle">
-            "Chúng mình đã từng gặp nhau như thế, cùng đi qua những mùa nắng hạ và lưu giữ những nụ cười rạng rỡ nhất tuổi 18! 🍅✨"
-        </p>
-
-        <div class="stats-badge">
-            <div class="badge-item">🏫 Niên khóa: <strong>2023 - 2026</strong></div>
-            <div class="badge-item">🎓 Tập thể: <strong>12 A1</strong></div>
-            <div class="badge-item">🎀 Sĩ số: <strong>40 Thành Viên</strong></div>
-        </div>
-
-        <div class="class-info-container">
-            <h2 class="section-heading">💐 Thầy Cô Đã Luôn Đồng Hành 💐</h2>
-            <p style="margin-bottom: 12px; color: #666; font-size: 1.1rem;">
-                Gửi lời tri ân sâu sắc nhất tới những "người lái đò" tận tụy đã dìu dắt chúng em trong suốt hành trình 3 năm cấp 3:
+        <div class="overview-box">
+            <h2 style="font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 15px;">Chào Mừng Đến Với Ngôi Nhà Chung 12A1! ✨</h2>
+            <p style="margin-bottom: 15px;">
+                Trang web này làốn nhật ký số lưu giữ toàn bộ hành trình 3 năm thanh xuân rực rỡ (2023 - 2026) của tập thể lớp dưới mái trường thân yêu.
             </p>
-
-            <div class="teachers-grid">
-                <div class="teacher-card">
-                    <strong>Thầy/Cô Nguyễn Văn A</strong>
-                    <span>Giáo viên Chủ Nhiệm</span>
-                </div>
-                <div class="teacher-card">
-                    <strong>Thầy/Cô Trần Thị B</strong>
-                    <span>Bộ môn Ngữ Văn</span>
-                </div>
-                <div class="teacher-card">
-                    <strong>Thầy/Cô Lê Văn C</strong>
-                    <span>Bộ môn Toán Học</span>
-                </div>
-                <div class="teacher-card">
-                    <strong>Thầy/Cô Phạm Thị D</strong>
-                    <span>Bộ môn Tiếng Anh</span>
-                </div>
-            </div>
+            <p style="color: #555;">
+                Nơi lưu trữ những nụ cười, những giọt mồ hôi trong mùa thi cử và tình bạn bền chặt theo năm tháng.
+            </p>
         </div>
-
-        <a href="#scrapbook" class="scroll-down-btn">
-            <span>Mở Cuốn Sổ Kỷ Niệm</span>
-            <span>👇</span>
-        </a>
     </section>
 
-    <!-- PHẦN 2: CUỐN SỔ SCRAPBOOK -->
-    <section class="scrapbook-section" id="scrapbook">
-        <div class="book-container">
-            <div class="notebook">
-                <div class="spine"></div>
-
-                <!-- TRANG TRÁI -->
-                <div class="page page-left">
-                    <div>
-                        <div class="page-header">
-                            <h2 class="page-title">Trang 1: Mùa Khai Giảng</h2>
-                            <p class="page-subtitle">Tháng 9 năm Lớp 10 🌸</p>
-                        </div>
-                        
-                        <p style="font-size: 1.2rem; line-height: 1.4; margin-bottom: 12px;">
-                            Những bước chân đầu tiên bước qua cổng trường cấp 3, tà áo trắng tinh khôi và những ánh mắt bỡ ngỡ làm quen...
-                        </p>
-
-                        <div class="polaroid-card">
-                            <div class="washi-tape"></div>
-                            <img src="https://picsum.photos/400/300?random=1" alt="Lễ Khai Giảng Lớp 10">
-                            <div class="polaroid-caption">Lần đầu gặp gỡ nhau! ✨</div>
-                        </div>
-                    </div>
-
-                    <div style="font-size: 1rem; color: #888; text-align: left;">Trang 01</div>
-                </div>
-
-                <!-- TRANG PHẢI -->
-                <div class="page page-right">
-                    <div>
-                        <div class="page-header">
-                            <h2 class="page-title">Trang 2: Buổi Chụp Ảnh Lớp</h2>
-                            <p class="page-subtitle">Kỷ niệm đầu tiên cùng nhau 📸</p>
-                        </div>
-
-                        <p style="font-size: 1.2rem; line-height: 1.4; margin-bottom: 12px;">
-                            Mới ngày nào còn e ấp ngại ngùng, vậy mà tấm ảnh tập thể đầu tiên đã đầy ắp những nụ cười tươi rạng rỡ.
-                        </p>
-
-                        <div class="polaroid-card" style="transform: rotate(2deg);">
-                            <div class="washi-tape" style="background-color: rgba(181, 234, 215, 0.85); left: 35%;"></div>
-                            <img src="https://picsum.photos/400/300?random=2" alt="Ảnh tập thể lớp 10">
-                            <div class="polaroid-caption">Gia đình 12A1 rực rỡ 💖</div>
-                        </div>
-                    </div>
-
-                    <div style="font-size: 1rem; color: #888; text-align: right;">Trang 02</div>
-                </div>
+    <!-- 2. MỤC THÀNH VIÊN LỚP -->
+    <section id="thanh-vien" class="section-container">
+        <h2 class="section-title">Thành Viên Lớp 12A1</h2>
+        <p style="text-align: center; margin-bottom: 25px; font-size: 1.3rem;">40 mảnh ghép tạo nên một tập thể tuyệt vời nhất!</p>
+        
+        <div class="grid-cards">
+            <div class="info-card" style="border-color: var(--primary-blue);">
+                <h3 style="color: var(--primary-blue);">Ban Cán Sự Lớp</h3>
+                <p>Lớp trưởng, Lớp phó học tập và kỷ luật luôn tận tụy vì phong trào chung của tập thể.</p>
             </div>
-
-            <div class="controls">
-                <button class="btn-control" id="prev-btn">◀ Trang trước</button>
-                <span class="page-number" id="page-indicator">1 / 4</span>
-                <button class="btn-control" id="next-btn">Trang sau ▶</button>
-                <button class="btn-control" id="audio-btn" style="background-color: #a8dadc; color: #1d3557;">🎵 Nhạc Nền</button>
+            <div class="info-card" style="border-color: var(--accent-yellow);">
+                <h3 style="color: #D69E2E;">Tổ 1 & Tổ 2</h3>
+                <p>Những gương mặt vàng trong làng phát biểu và cứu nguy bài tập về nhà phút chót.</p>
+            </div>
+            <div class="info-card" style="border-color: var(--accent-purple);">
+                <h3 style="color: var(--accent-purple);">Tổ 3 & Tổ 4</h3>
+                <p>Biệt đội "tấu hài" chuyên tạo ra những tràng cười sảng khoái sau mỗi giờ học căng thẳng.</p>
             </div>
         </div>
     </section>
 
-    <script>
-        const audioBtn = document.getElementById('audio-btn');
-        let isPlaying = false;
+    <!-- 3. MỤC GIÁO VIÊN -->
+    <section id="giao-vien" class="section-container">
+        <h2 class="section-title">Thầy Cô Giáo Bộ Môn</h2>
+        <p style="text-align: center; margin-bottom: 25px; font-size: 1.3rem;">Tri ân những người lái đò thầm lặng và tận tụy.</p>
 
-        audioBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            audioBtn.textContent = isPlaying ? "⏸ Tắt Nhạc" : "🎵 Nhạc Nền";
-        });
-    </script>
-    <!-- Liên kết tới File JS Interactions -->
+        <div class="grid-cards">
+            <div class="info-card">
+                <h3>Thầy / Cô Chủ Nhiệm</h3>
+                <p>Người luôn nghiêm khắc nhưng vô cùng yêu thương và bao bọc chúng em.</p>
+            </div>
+            <div class="info-card">
+                <h3>Tổ Bộ Môn Tự Nhiên</h3>
+                <p>Toán, Lý, Hóa, Sinh - Những công thức và định lý cùng gắn liền với bao mùa thi.</p>
+            </div>
+            <div class="info-card">
+                <h3>Tổ Bộ Môn Xã Hội</h3>
+                <p>Văn, Sử, Địa, Anh - Nơi nuôi dưỡng tâm hồn và mở ra chân trời thế giới.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MỤC KỈ YẾU -->
+    <section id="ki-yeu" class="section-container">
+        <h2 class="section-title">Album Kỉ Yếu</h2>
+        <p style="text-align: center; margin-bottom: 25px; font-size: 1.3rem;">Những khoảnh khắc thanh xuân không thể nào quên.</p>
+
+        <div class="yearbook-grid">
+            <div class="yearbook-item">
+                <img src="https://picsum.photos/400/300?random=101" alt="Khai giảng">
+                <div class="yearbook-caption">Mùa Khai Giảng Đầu Tiên 🌸</div>
+            </div>
+            <div class="yearbook-item">
+                <img src="https://picsum.photos/400/300?random=102" alt="Hội thao">
+                <div class="yearbook-caption">Hội Thao & Văn Nghệ Rực Rỡ ⚽</div>
+            </div>
+            <div class="yearbook-item">
+                <img src="https://picsum.photos/400/300?random=103" alt="Chụp kỉ yếu">
+                <div class="yearbook-caption">Ngày Chụp Ảnh Kỉ Yếu 🎓</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MỤC KÍ ỨC -->
+    <section id="ki-uc" class="section-container">
+        <h2 class="section-title">Góc Kí Ức & Chia Sẻ</h2>
+        
+        <div class="memory-box">
+            <h3>📖 Chuyện Những Giờ Ra Chơi</h3>
+            <p>Là tiếng cười đùa rộn rã ở hành lang, là ổ bánh mì ăn vội chia đôi và những câu chuyện bàn phím không bao giờ hồi kết.</p>
+        </div>
+
+        <div class="memory-box" style="border-color: var(--primary-blue);">
+            <h3 style="color: var(--primary-blue);">⚡ Mùa Ôn Thi Nước Rút</h3>
+            <p>Những đêm thức trắng giải đề, những cái gật đầu động viên nhau qua ánh mắt và niềm tin sẽ cùng nhau bước vào cánh cửa đại học mơ ước.</p>
+        </div>
+    </section>
+
+    <!-- Liên kết File JS (nếu có hiệu ứng mở rộng sau này) -->
     <script src="./assets/js/script.js"></script>
-</body>
-</html>
 </body>
 </html>
