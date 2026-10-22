@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Once Upon Our Schooldays 💖 | Sổ Kỷ Niệm Thanh Xuân</title>
     
-    <!-- Google Fonts: Phông chữ đáng yêu & bồng bềnh -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@600;700&family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Palette màu Dopamine & Candy Pastel từ ảnh mẫu */
             --bg-yellow: #fff9db;
-            --grid-blue: #b5ead7;
-            --grid-pink: #ffb7b2;
             --pink-main: #ff9aa2;
-            --purple-pastel: #e2f0cb;
+            --pink-light: #ffb7b2;
             --purple-soft: #d6c7ff;
             --yellow-bright: #ffe5ad;
+            --mint-light: #b5ead7;
             --blue-soft: #a8dadc;
             --text-dark: #4a4e69;
             --white: #ffffff;
@@ -36,19 +34,19 @@
         }
 
         body {
-            font-family: 'Gaegu', 'Patrick Hand', cursive, sans-serif;
+            font-family: 'Patrick Hand', 'Gaegu', cursive, sans-serif;
             background-color: var(--bg-yellow);
             color: var(--text-dark);
-            /* Nền Caro Gingham Pastel 2 màu kẻ (Xanh Mint & Hồng) */
+            /* Nền Caro Gingham Pastel */
             background-image: 
                 linear-gradient(rgba(181, 234, 215, 0.4) 2px, transparent 2px),
                 linear-gradient(90deg, rgba(255, 183, 178, 0.4) 2px, transparent 2px);
-            background-size: 32px 32px;
-            overflow-x: hidden;
+            background-size: 30px 30px;
+            min-height: 100vh;
         }
 
         /* -------------------------------------------------------------
-           1. HER0 / INTRO SECTION (ĐẦU TRANG WEB)
+           1. HERO SECTION (MỞ ĐẦU)
         ------------------------------------------------------------- */
         .intro-section {
             min-height: 100vh;
@@ -58,19 +56,175 @@
             align-items: center;
             padding: 40px 20px;
             text-align: center;
-            position: relative;
         }
 
-        /* Sticker Tiêu Đề Nổi Bồng Bềnh */
         .title-sticker {
-            background: #ff9aa2;
+            background: var(--pink-main);
             color: var(--white);
             padding: 15px 35px;
             border-radius: 50px;
-            border: 6px solid #ffffff;
-            box-shadow: 0 10px 20px rgba(255, 154, 162, 0.4), inset 0 -4px 0 rgba(0,0,0,0.1);
-            font-family: 'Comfortaa', cursive;
-            font-size: 2.8rem;
+            border: 5px solid var(--white);
+            box-shadow: 0 8px 20px rgba(255, 154, 162, 0.4);
+            font-family: 'Comfortaa', cursive, sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             transform: rotate(-2deg);
-            position:
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 24px;
+            border-radius: 20px;
+            border: 3px dashed var(--blue-soft);
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .stats-badge {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .badge-item {
+            background: var(--white);
+            border: 3px solid var(--purple-soft);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            box-shadow: 3px 3px 0px var(--purple-soft);
+        }
+
+        /* Khung Thông Tin Thầy Cô */
+        .class-info-container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 25px;
+            border: 4px solid var(--mint-light);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-heading {
+            font-family: 'Comfortaa', cursive, sans-serif;
+            font-size: 1.6rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .teacher-card {
+            background: #fff0f3;
+            border: 2px solid var(--pink-light);
+            padding: 12px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .teacher-card strong {
+            display: block;
+            color: #d62828;
+            font-size: 1.2rem;
+        }
+
+        .teacher-card span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .scroll-down-btn {
+            background: var(--yellow-bright);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 3px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Comfortaa', cursive, sans-serif;
+            transition: transform 0.2s;
+        }
+
+        .scroll-down-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* -------------------------------------------------------------
+           2. SCRAPBOOK SECTION (CUỐN SỔ)
+        ------------------------------------------------------------- */
+        .scrapbook-section {
+            min-height: 100vh;
+            padding: 40px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-container {
+            width: 100%;
+            max-width: 900px;
+            min-height: 580px;
+            background-color: #f7d6e0;
+            border-radius: 28px;
+            border: 6px solid var(--white);
+            box-shadow: 0 15px 35px rgba(255, 154, 162, 0.3);
+            padding: 15px;
+            position: relative;
+            display: flex;
+        }
+
+        .notebook {
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 18px;
+            display: flex;
+            position: relative;
+            background-image: 
+                linear-gradient(rgba(181, 234, 215, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 183, 178, 0.3) 1px, transparent 1px);
+            background-size: 22px 22px;
+            overflow: hidden;
+        }
+
+        .spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            transform: translateX(-50%);
+            background: repeating-linear-gradient(
+                0deg,
+                #ffb7b2 0px,
+                #ffb7b2 12px,
+                transparent 12px,
+                transparent 24px
+            );
+            z-index: 10;
+            border-radius: 10px;
+        }
+
+        .page {
+            flex: 1;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space
