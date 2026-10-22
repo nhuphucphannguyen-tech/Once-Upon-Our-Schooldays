@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Once Upon Our Schooldays | Lưu Bút Số Của Chúng Ta</title>
+    
+    <!-- Google Fonts: Phông chữ viết tay & phông đọc thân thiện -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Phong cách Sổ tay Caro -->
+    <style>
+        :root {
+            --paper-bg: #f9f6f0;
+            --grid-line: rgba(180, 205, 230, 0.4);
+            --leather-cover: #5c3d2e;
+            --text-color: #2b2b2b;
+            --accent-pink: #ffb7c5;
+            --accent-yellow: #ffe17d;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Patrick Hand', 'Quicksand', cursive, sans-serif;
+            background-color: #2d3748;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+            overflow-x: hidden;
+        }
+
+        /* Khung ngoài của Cuốn Sổ Bìa Da */
+        .book-container {
+            width: 100%;
+            max-width: 950px;
+            height: 620px;
+            background-color: var(--leather-cover);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            padding: 15px;
+            position: relative;
+            display: flex;
+        }
+
+        /* Cuốn sổ chính dạng mở 2 trang */
+        .notebook {
+            width: 100%;
+            height: 100%;
+            background-color: var(--paper-bg);
+            border-radius: 8px;
+            display: flex;
+            position: relative;
+            /* Họa tiết trang giấy caro (Grid Paper) */
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 20px 20px;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.08);
+        }
+
+        /* Gáy sổ đóng gáy ghim / lò xo ở giữa */
+        .spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(0,0,0,0.15), transparent 40%, rgba(0,0,0,0.15));
+            z-index: 10;
+            border-left: 1px dashed rgba(0,0,0,0.2);
+            border-right: 1px dashed rgba(0,0,0,0.2);
+        }
+
+        /* Mỗi trang sách (Trang Trái & Trang Phải) */
+        .page {
+            flex: 1;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            border-bottom: 2px dashed #d1c7bd;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .page-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            color: #8b4513;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Khung chứa ảnh dạng Polaroid */
+        .polaroid-card {
+            background: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 3px 5px 12px var(--shadow-color);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .polaroid-card:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 5;
+            box-shadow: 5px 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .polaroid-caption {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-top: 8px;
+            color: #333;
+        }
+
+        /* Băng dính Washi Tape trang trí */
+        .washi-tape {
+            position: absolute;
+            top: -10px;
+            left: 30%;
+            width: 80px;
+            height: 22px;
+            background-color: rgba(255, 183, 197, 0.7);
+            transform: rotate(-3deg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Thanh điều khiển dưới cuốn sổ (Nút Lật Trang, Âm Thanh) */
+        .controls {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-control {
+            background-color: #f4a261;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-control:hover {
+            background-color: #e76f51;
+        }
+
+        .page-number {
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* Responsive cho màn hình điện thoại */
+        @media (max-width: 768px) {
+            .book-container {
+                height: auto;
+                min-height: 80vh;
+            }
+            .notebook {
+                flex-direction: column;
+            }
+            .spine {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- KHUNG TỔNG THỂ CUỐN SỔ HANDMADE -->
+    <div class="book-container">
+        <div class="notebook">
+            <div class="spine"></div>
+
+            <!-- TRANG TRÁI (LEFT PAGE) -->
+            <div class="page page-left" id="page-left">
+                <div>
+                    <div class="page-header">
+                        <h1 class="page-title">Once Upon Our Schooldays</h1>
+                        <p class="page-subtitle">📖 Chương 1: Những Ngày Đầu Bỡ Ngỡ (Năm Lớp 10)</p>
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 15px;">
+                        Ngày đầu tiên bước qua cổng trường cấp 3, ai trong chúng mình cũng mang theo những ngập ngừng và bỡ ngỡ...
+                    </p>
+
+                    <!-- Khung ảnh mẫu Polaroid 1 -->
+                    <div class="polaroid-card">
+                        <div class="washi-tape"></div>
+                        <img src="https://picsum.photos/400/300?random=1" alt="Buổi Khai Giảng Lớp 10">
+                        <div class="polaroid-caption">Lần đầu gặp gỡ - Lễ Khai Giảng 🌸</div>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.9rem; color: #888; text-align: left;">Trang 01</div>
+            </div>
+
+            <!-- TRANG PHẢI (RIGHT PAGE) -->
+            <div class="page page-right" id="page-right">
+                <div>
+                    <div class="page-header">
+                        <h2 class="page-title">Kỷ Niệm Đầu Tiên</h2>
+                        <p class="page-subtitle">Tháng 9 năm ấy...</p>
+                    </div>
+
+                    <p style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 15px;">
+                        Những ánh mắt ngơ ngác tìm chỗ ngồi, những buổi sinh hoạt lớp đầu tiên và những nụ cười làm quen ngượng ngùng.
+                    </p>
+
+                    <!-- Khung ảnh mẫu Polaroid 2 -->
+                    <div class="polaroid-card" style="transform: rotate(3deg);">
+                        <div class="washi-tape" style="background-color: rgba(255, 225, 125, 0.7); left: 40%;"></div>
+                        <img src="https://picsum.photos/400/300?random=2" alt="Sinh hoạt lớp">
+                        <div class="polaroid-caption">Buổi chụp ảnh tập thể đầu tiên ✨</div>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.9rem; color: #888; text-align: right;">Trang 02</div>
+            </div>
+        </div>
+
+        <!-- THANH ĐIỀU KHIỂN SỔ -->
+        <div class="controls">
+            <button class="btn-control" id="prev-btn">◀ Trang trước</button>
+            <span class="page-number" id="page-indicator">1 / 4</span>
+            <button class="btn-control" id="next-btn">Trang sau ▶</button>
+            <button class="btn-control" id="audio-btn" style="background-color: #2a9d8f;">🎵 Bật Nhạc</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT XỬ LÝ ĐƠN GIẢN -->
+    <script>
+        console.log("Dự án Once Upon Our Schooldays đã sẵn sàng!");
+
+        // Đoạn script sơ bộ cho các nút bấm
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const audioBtn = document.getElementById('audio-btn');
+
+        let isPlaying = false;
+
+        audioBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            audioBtn.textContent = isPlaying ? "⏸ Tắt Nhạc" : "🎵 Bật Nhạc";
+        });
+    </script>
+</body>
+</html>
